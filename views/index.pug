@@ -1,0 +1,8 @@
+extends layout 
+
+block content 
+  each i in messages 
+    ul
+      li= i.text
+      li= i.user
+      li= i.added

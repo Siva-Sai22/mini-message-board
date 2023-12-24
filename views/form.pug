@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+  form(method="POST", action="/new")
+    label(for="message") Message: 
+    input(id="message", name="messagebox", required)
+    label(for="username") Name: 
+    input(id="username", name="username", required)
+    button(type="submit") Send
