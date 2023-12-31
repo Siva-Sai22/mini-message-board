@@ -3,7 +3,9 @@ extends layout
 block content 
   each i in messages 
     ul
-      li= i.text
+      li= i.message
       li= i.user
-      li= i.added
+      li= i.time
+      form(method="POST" action="/"+i.id+"/delete")
+        button(type="submit") Delete
   a(href="/new") Add a new message  

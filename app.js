@@ -1,15 +1,25 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const path = require('path');
-
+const mongoose = require('mongoose');
+require('dotenv').config();
 const indexRouter = require('./routes/index');
 
 const app = express();
 const PORT = 3000;
 
+main().catch(err => console.log(err));
+async function main() {
+    await mongoose.connect(process.env.MONGODB_URI);
+}
+mongoose.set('strictQuery', false);
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(indexRouter);
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
     res.sendStatus(404);
