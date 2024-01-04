@@ -2,7 +2,7 @@ extends layout
 
 block content 
   each i in messages 
-    div(class="bg-[#FFF5E0] p-4 overflow-scroll")
+    div(class="bg-[#FFF5E0] p-4")
       ul(class="flex flex-col rounded-lg bg-[#F4BF96] p-4 mb-4 shadow-xl")
         li(class="text-lg") Message: #{i.message}
         li By: #{i.user}

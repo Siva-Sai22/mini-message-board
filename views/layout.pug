@@ -6,7 +6,8 @@ html
     meta(name='viewport' content='width=device-width, initial-scale=1')
     link(rel='stylesheet' href='/stylesheets/style.css')
   body 
-    div(class="flex items-center justify-between bg-[#EEE2DE]")
+    div(class="flex items-center justify-between bg-[#EEE2DE] sticky top-0")
       h1(class="m-4 text-3xl") Mini Messageboard 
       a(href="/new" class="m-4 rounded-lg bg-red-400 px-3 py-2") Add a new message  
-    block content 
+    div(class="overflow-scroll")
+      block content
