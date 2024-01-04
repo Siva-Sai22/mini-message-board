@@ -1,9 +1,13 @@
 {
   "name": "mini_message_board",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=16.12"
+  },
   "private": true,
   "description": "",
   "scripts": {
+    "start": "node app.js",
     "devstart": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +18,7 @@
     "body-parser": "^1.20.2",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "helmet": "^7.1.0",
     "luxon": "^3.4.4",
     "mongoose": "^8.0.3",
     "pug": "^3.0.2"

@@ -4,9 +4,12 @@ const path = require('path');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const indexRouter = require('./routes/index');
+const helmet = require("helmet");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(helmet());
 
 main().catch(err => console.log(err));
 async function main() {
