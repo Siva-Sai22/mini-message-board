@@ -1,9 +1,11 @@
 extends layout 
 
 block content 
-  form(method="POST", action="/new")
-    label(for="message") Message: 
-    input(id="message", name="messagebox", required)
-    label(for="username") Name: 
-    input(id="username", name="username", required)
-    button(type="submit") Send
+  form(method="POST" action="/new" class="flex flex-col mx-auto my-4 border-2 w-max p-4")
+    div(class="flex mb-2")
+      label(for="message" class="text-xl mr-2") Message: 
+      input(id="message" name="messagebox", required class="border-solid border-2 border-gray-400 px-2") 
+    div(class="flex")
+      label(for="username" class="text-xl mr-[31px]") Name : 
+      input(id="username" name="username", required class="border-solid border-2 border-gray-400 px-2")
+    button(type="submit" class="text-xl p-2 bg-red-400 rounded-lg mt-2 w-24 self-center") Send
