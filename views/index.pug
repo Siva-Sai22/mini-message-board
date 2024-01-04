@@ -2,10 +2,10 @@ extends layout
 
 block content 
   each i in messages 
-    ul
-      li= i.message
-      li= i.user
-      li= i.time
-      form(method="POST" action="/"+i.id+"/delete")
-        button(type="submit") Delete
-  a(href="/new") Add a new message  
+    div(class="bg-[#FFF5E0] p-4")
+      ul(class="flex flex-col rounded-lg bg-[#F4BF96] p-4 mb-4 shadow-xl")
+        li(class="text-lg") Message: #{i.message}
+        li By: #{i.user}
+        li= i.time
+        form(method="POST" action="/"+i.id+"/delete" class="self-center")
+          button(type="submit" class="p-2 bg-red-400 rounded-lg mt-2") Delete
