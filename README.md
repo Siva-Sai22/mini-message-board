@@ -32,11 +32,3 @@ A step by step series of examples that tell you how to get a development environ
 
 - [Express.js](https://expressjs.com/) - The web framework used
 - [Pug](https://pugjs.org/api/getting-started.html) - Template Engine
-
-## Authors
-
-- Your Name
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
