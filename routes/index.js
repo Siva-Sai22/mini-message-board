@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const message = require('../model/messages');
+const user = require('../model/user');
 const { body, validationResult } = require('express-validator');
 
 router.get('/', async (req, res) => {
@@ -11,6 +12,10 @@ router.get('/', async (req, res) => {
 router.get('/new', (req, res) => {
   res.render('form');
 });
+
+router.get('/signup', (req, res)=>{
+  res.render('signup');
+})
 
 router.post('/new', [
   body("messagebox")
@@ -32,7 +37,8 @@ router.post('/new', [
     });
 
     if (!errors.isEmpty()) {
-      res.render('form');
+      const errorMessages = errors.array().map(error => error.msg);
+      res.render('form', { errors: errorMessages });
       return;
     } else {
       await currMessage.save();
@@ -41,13 +47,19 @@ router.post('/new', [
   }
 ]);
 
-router.post('/:id/delete',async (req,res)=>{
+router.post('/:id/delete', async (req, res) => {
   const delMessage = await message.findById(req.params.id).exec();
-  if(delMessage==null){
+  if (delMessage == null) {
     return res.redirect('/');
   }
   await message.findByIdAndDelete(req.params.id);
   res.redirect('/');
+});
+
+router.post('/signup', async (req, res) => {
+  const { name, email, password } = req.body;
+  await user.create({ name, email, password });
+  res.render('/');
 })
 
 module.exports = router;

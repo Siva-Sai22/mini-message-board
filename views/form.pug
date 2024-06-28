@@ -9,3 +9,6 @@ block content
       label(for="username" class="text-xl mr-[31px]") Name : 
       input(id="username" name="username", required class="border-solid border-2 border-gray-400 px-2")
     button(type="submit" class="text-xl p-2 bg-red-400 rounded-lg mt-2 w-24 self-center") Send
+    if errors && errors.length > 0
+      each error in errors
+        p(class="mt-2 text-red-500") #{error}
