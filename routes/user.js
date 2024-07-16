@@ -1,16 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
 const user = require('../model/user');
 const { v4: uuidv4 } = require('uuid');
-
-const sessionIdToUser = new Map();
-function setUser(id, user) {
-    sessionIdToUser.set(id, user);
-}
-function getUser(id) {
-    return sessionIdToUser.get(id);
-}
+const { getUser, setUser } = require('../services/auth');
 
 router.get('/signup', (req, res) => {
     res.render('signup');

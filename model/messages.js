@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const messageSchema = new Schema({
     message: { type: String, required: true, maxlength: 100 },
-    user: { type: String, required: true, maxlength: 15 },
+    user: { type: String, required: true, maxlength: 50 },
     time: { type: Date, default: Date.now }
 });
 

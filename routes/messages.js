@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const message = require('../model/messages');
-const mongoose = require('mongoose');
 const { body, validationResult } = require('express-validator');
 
 router.get('/new', (req, res) => {
