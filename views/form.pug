@@ -1,7 +1,7 @@
 extends layout 
 
 block content 
-  form(method="POST" action="/new" class="flex flex-col mx-auto my-4 border-2 w-max p-4")
+  form(method="POST" action="/message/new" class="flex flex-col mx-auto my-4 border-2 w-max p-4")
     div(class="flex mb-2")
       label(for="message" class="text-xl mr-2") Message: 
       input(id="message" name="messagebox", required class="border-solid border-2 border-gray-400 px-2") 
