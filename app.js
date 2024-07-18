@@ -8,7 +8,8 @@ const indexRouter = require('./routes/index');
 const messageRouter = require('./routes/messages');
 const userRouter = require('./routes/user');
 const helmet = require("helmet");
-const { restrictToLoginUsers } = require('./services/auth');
+const session = require('express-session');
+const { getUser, restrictToLoginUsers } = require('./services/auth');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -26,6 +27,21 @@ app.set('view engine', 'pug');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: false
+}));
+app.use((req, res, next) => {
+    const sessionId = req.cookies?.uid;
+    if (sessionId) {
+        const currentUser = getUser(sessionId);
+        if (currentUser) {
+            res.locals.currentUser = currentUser;
+        }
+    }
+    next();
+});
 app.use('/', indexRouter);
 app.use('/message', restrictToLoginUsers, messageRouter);
 app.use('/user', userRouter);
